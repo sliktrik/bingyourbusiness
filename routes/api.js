@@ -41,7 +41,8 @@ router.get('/visits/:website', function (req, res) {
         } else {
             res.json({
                 status: false,
-                message: "no data"
+                message: "no data",
+                url: url
             });
         }
     })
@@ -71,7 +72,8 @@ router.get('/rank/:website', function (req, res) {
         } else {
             res.json({
                 status: false,
-                message: "no data"
+                message: "no data",
+                url: url
             });
         }
     })
@@ -106,7 +108,8 @@ router.get('/orgsearch/:website', function (req, res) {
         } else {
             res.json({
                 status: false,
-                message: "no data"
+                message: "no data",
+                url: url
             });
         }
     })
@@ -141,7 +144,8 @@ router.get('/paidsearch/:website', function (req, res) {
         } else {
             res.json({
                 status: false,
-                message: "no data"
+                message: "no data",
+                url: url
             });
         }
     })
