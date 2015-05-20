@@ -8,7 +8,7 @@ var key = "32062136805a7a2ef5a3a055b7673bc7";
 
 router.get('/', function (req, res) {
     res.render('index', {
-        title: 'Express'
+        title: 'api endpoint'
     });
 });
 
@@ -30,13 +30,13 @@ router.get('/visits/:website', function (req, res) {
 
             for (var key in json.Values) {
                 total += json.Values[key].Value;
-
-                res.json({
-                    status: true,
-                    data: total,
-                    url: url
-                });
             }
+
+            res.json({
+                status: true,
+                data: total,
+                url: url
+            });
 
         } else {
             res.json({
