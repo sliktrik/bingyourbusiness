@@ -15,18 +15,21 @@ router.get('/', function (req, res) {
 router.get('/visits/:website', function (req, res) {
 
     var today = new Date();
-    var endDate = today.getMonth() + "-" + today.getFullYear();
-    var startDate = (today.getMonth() - 1) + "-" + today.getFullYear();
+    var endDate = (today.getMonth() - 1) + "-" + today.getFullYear();
+    var startDate = (today.getMonth() - 2) + "-" + today.getFullYear();
 
     var website = req.params.website;
     var url = api + website + "/v1/visits?gr=daily&start=" + startDate + "&end=" + endDate + "&md=false&Format=JSON&UserKey=" + key;
 
     request(url, function (error, response, body) {
+        
 
         if (!error && response.statusCode == 200) {
 
             var json = JSON.parse(body);
             var total = 0;
+            
+            console.log(json);
 
             for (var key in json.Values) {
                 total += json.Values[key].Value;
@@ -51,8 +54,8 @@ router.get('/visits/:website', function (req, res) {
 router.get('/rank/:website', function (req, res) {
 
     var today = new Date();
-    var endDate = today.getMonth() + "-" + today.getFullYear();
-    var startDate = (today.getMonth() - 1) + "-" + today.getFullYear();
+    var endDate = (today.getMonth() - 1) + "-" + today.getFullYear();
+    var startDate = (today.getMonth() - 2) + "-" + today.getFullYear();
 
     var website = req.params.website;
     var url = api + website + "/v1/traffic?gr=daily&start=" + startDate + "&end=" + endDate + "&md=false&Format=JSON&UserKey=" + key;
@@ -82,8 +85,8 @@ router.get('/rank/:website', function (req, res) {
 router.get('/orgsearch/:website', function (req, res) {
 
     var today = new Date();
-    var endDate = today.getMonth() + "-" + today.getFullYear();
-    var startDate = (today.getMonth() - 1) + "-" + today.getFullYear();
+    var endDate = (today.getMonth() - 1) + "-" + today.getFullYear();
+    var startDate = (today.getMonth() - 2) + "-" + today.getFullYear();
 
     var website = req.params.website;
     var url = api + website + "/v1/orgsearch?gr=daily&start=" + startDate + "&end=" + endDate + "&md=false&Format=JSON&UserKey=" + key;
@@ -118,8 +121,8 @@ router.get('/orgsearch/:website', function (req, res) {
 router.get('/paidsearch/:website', function (req, res) {
 
     var today = new Date();
-    var endDate = today.getMonth() + "-" + today.getFullYear();
-    var startDate = (today.getMonth() - 1) + "-" + today.getFullYear();
+    var endDate = (today.getMonth() - 1) + "-" + today.getFullYear();
+    var startDate = (today.getMonth() - 2) + "-" + today.getFullYear();
 
     var website = req.params.website;
     var url = api + website + "/v1/paidsearch?gr=daily&start=" + startDate + "&end=" + endDate + "&md=false&Format=JSON&UserKey=" + key;
